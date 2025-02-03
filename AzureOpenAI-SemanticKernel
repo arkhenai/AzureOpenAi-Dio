@@ -1,0 +1,148 @@
+# AzureOpenAI-SemanticKernel
+Repository for the Bootcamp Microsoft AI for Tech - OpenAI Services
+
+# 🚀 Explorando o Azure OpenAI e o Semantic Kernel  
+
+Este repositório documenta minha experiência explorando o **Azure OpenAI** e a integração com o **Semantic Kernel**. Durante esse processo, aprendi a configurar, testar e integrar diferentes serviços para criar aplicações de IA poderosas.  
+
+Neste documento, compartilho não apenas o que aprendi, mas também insights práticos, exemplos de código e melhores práticas para o desenvolvimento com **Azure OpenAI** e **Semantic Kernel**.  
+
+---
+
+## 📌 Índice  
+1. [Introdução](#-introdução)  
+2. [Compreendendo o Desafio](#-compreendendo-o-desafio)  
+3. [O que é o Azure OpenAI?](#-o-que-é-o-azure-openai)  
+4. [Implementação de API no Azure OpenAI](#-implementação-de-api-no-azure-openai)  
+5. [Introdução ao Semantic Kernel](#-introdução-ao-semantic-kernel)  
+6. [Principais Aprendizados](#-principais-aprendizados)  
+7. [Próximos Passos](#-próximos-passos)  
+8. [Conclusão](#-conclusão)  
+9. [Materiais de Apoio](#-materiais-de-apoio)  
+
+---
+
+## 🎯 Introdução  
+
+O **Azure OpenAI** e o **Semantic Kernel** representam uma nova fronteira para o desenvolvimento de aplicações baseadas em inteligência artificial. Durante este desafio, explorei como **chamar APIs de IA**, integrar **modelos generativos** e estruturar **agentes inteligentes**.  
+
+O objetivo foi testar diferentes funcionalidades e compreender como utilizar esses serviços para criar **soluções escaláveis e personalizáveis**.  
+
+---
+
+## 🚀 Compreendendo o Desafio  
+
+### **Objetivo Principal**  
+
+O desafio proposto envolveu a exploração de chamadas de API do **Azure OpenAI** e a integração com o **Semantic Kernel**. O foco era desenvolver aplicações práticas, compreendendo suas funcionalidades e implementações.  
+
+### **Principais Tarefas**  
+✅ Explorar o funcionamento do **Azure OpenAI API**.  
+✅ Implementar chamadas de API para interagir com modelos de IA.  
+✅ Aprender sobre o **Semantic Kernel** e suas aplicações.  
+✅ Armazenar o aprendizado em um repositório no **GitHub**.  
+
+📌 **Material de Referência:**  
+[Documentação Oficial do Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/)  
+
+---
+
+## 🧠 O que é o Azure OpenAI?  
+
+O **Azure OpenAI** fornece acesso a modelos avançados de IA por meio de **APIs REST**, permitindo diversas aplicações, como:  
+
+✔ **Chat** - Interações conversacionais avançadas.  
+✔ **Completar** - Geração de textos baseados em prompts.  
+✔ **Imagens** - Uso do **DALL-E** para criação de imagens.  
+✔ **Áudio** - Processamento e conversão de texto para fala.  
+
+---
+
+## 🛠 Implementação de API no Azure OpenAI  
+
+### **Configurando e Chamando a API**  
+
+Para utilizar a API, é necessário configurar o **endpoint** e a **chave de acesso**. O exemplo abaixo mostra como gerar uma resposta textual com **GPT-4**:  
+
+```python
+import os
+from openai import AzureOpenAI
+
+client = AzureOpenAI(
+    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+    api_version="2024-02-01"
+)
+
+response = client.chat.completions.create(
+    model=os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME"),
+    messages=[{"role": "user", "content": "Explique a teoria da relatividade"}],
+    temperature=0.7
+)
+
+print(response["choices"][0]["message"]["content"])
+```
+
+📌 **Dica:** Ajuste os parâmetros **temperature** e **top_p** para controlar a criatividade das respostas.  
+
+---
+
+## 🤖 Introdução ao Semantic Kernel  
+
+O **Semantic Kernel** é um middleware de IA que permite a criação de **agentes inteligentes**. Ele oferece funcionalidades como:  
+
+✔ **Kernel** - Comunicação com modelos de IA.  
+✔ **Skills** - Habilidades personalizadas para agentes.  
+✔ **Functions** - Automação de processos.  
+✔ **Memory** - Armazenamento de contexto para interações.  
+
+### **Exemplo de Uso**  
+
+```python
+from semantic_kernel import Kernel
+
+kernel = Kernel()
+kernel.add_skill("Responder Perguntas", function=lambda question: "Resposta para: " + question)
+
+response = kernel.invoke("Responder Perguntas", "O que é Machine Learning?")
+print(response)
+```
+
+📌 **Dica:** O uso de **memory stores** pode melhorar o contexto das interações com IA.  
+
+---
+
+## 📚 Principais Aprendizados  
+
+### **1️⃣ Chamadas de API no Azure OpenAI**  
+- Configuração do ambiente com **chaves de API**.  
+- Uso de **modelos de IA** para texto, imagem e áudio.  
+- Ajuste de parâmetros para controle de geração de conteúdo.  
+
+### **2️⃣ Exploração do Semantic Kernel**  
+- Compreensão da **arquitetura** e dos **componentes principais**.  
+- Criação de **agentes de IA personalizados**.  
+- Uso de **armazenamento vetorial** para contexto persistente.  
+
+---
+
+## 🔜 Próximos Passos  
+
+📌 **Minha jornada continua!** Os próximos passos incluem:  
+✅ Explorar integrações avançadas do **Azure OpenAI e Semantic Kernel**.  
+✅ Testar **personalização de modelos** para diferentes cenários.  
+✅ Criar um projeto completo utilizando **deploy escalável no Azure**.  
+
+---
+
+## 🎯 Conclusão  
+
+Este desafio proporcionou uma experiência enriquecedora, permitindo a exploração prática do **Azure OpenAI** e do **Semantic Kernel**. A combinação dessas ferramentas abre um mundo de possibilidades para aplicações inteligentes.  
+
+🚀 **Minha principal lição:** A inteligência artificial se torna mais poderosa quando bem integrada e personalizada.  
+
+📌 **Materiais de Apoio:**  
+🔹 [Azure OpenAI API Reference](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)  
+🔹 [Introduction to Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/)  
+
+🚀 **Explorando o futuro da IA!** 🚀
